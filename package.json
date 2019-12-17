@@ -1,0 +1,37 @@
+{
+  "name": "storybook-code-panel",
+  "version": "1.0.0",
+  "description": "Storybook Addon to display code related to a story.  Framework agnostic",
+  "main": "index.js",
+  "dependencies": {
+    "react-syntax-highlighter": "^12.2.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.7.5",
+    "@babel/core": "^7.7.5",
+    "@babel/plugin-transform-react-jsx": "^7.7.4",
+    "@babel/preset-react": "^7.7.4",
+    "@storybook/api": "^5.2.8",
+    "@storybook/components": "^5.2.8",
+    "@storybook/theming": "^5.2.8",
+    "@types/webpack-env": "^1.14.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Davy803/storybook-code-panel.git"
+  },
+  "keywords": [
+    "storybook",
+    "code-sample",
+    "storybook-addon"
+  ],
+  "author": "David Ly",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Davy803/storybook-code-panel/issues"
+  },
+  "homepage": "https://github.com/Davy803/storybook-code-panel#readme"
+}
