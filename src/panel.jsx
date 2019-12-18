@@ -14,7 +14,8 @@ const SourcePanel = () => {
 
     let params = getParams();
 
-    const [fileName, setFileName] = useAddonState(ADDON_ID, params.files[0]);
+    const [fileName, setFileName] = useAddonState(`${ADDON_ID}/fileName`, params.files[0]);
+    const [hideLineNumbers, setHideLineNumbers] = useAddonState(`${ADDON_ID}/hideLineNumbers`, !!params.hideLineNumbers);
 
     let fileMap = params.files.reduce((prev, curr) => ({ ...prev, [curr.fileName]: curr }), {});
 
@@ -22,22 +23,37 @@ const SourcePanel = () => {
 
 
     return <div>
-        <Form.Select
-            value={file.fileName}
-            name='File'
-            onChange={(e) => {
-                setFileName(e.target.value);
-            }}
-            size='flex'>
-            {params.files.map((x) => (
-                <option key={x.fileName} value={x.fileName}>
-                    {x.fileName}
-                </option>
-            ))}
-        </Form.Select>
+        <Form.Field label="Show Line Numbers:">
+            <input
+                type="checkbox"
+                checked={!hideLineNumbers}
+                onChange={(e) => {
+                    setHideLineNumbers(!e.target.checked);
+                }}
+            />
+        </Form.Field>
+        <Form.Field label="File:">
+            <Form.Select
+                value={file.fileName}
+                name='File'
+                onChange={(e) => {
+                    setFileName(e.target.value);
+                }}
+                size='flex'>
+                {params.files.map((x) => (
+                    <option key={x.fileName} value={x.fileName}>
+                        {x.fileName}
+                    </option>
+                ))}
+            </Form.Select>
+        </Form.Field>
         {
             file ?
-                <SyntaxHighlighter key={file.fileName || i} language={file.language || getLanguage(file.fileName, params)} style={params.style || atomDark}>
+                <SyntaxHighlighter
+                    key={file.fileName || i}
+                    language={file.language || getLanguage(file.fileName, params)}
+                    showLineNumbers={!hideLineNumbers}
+                    style={params.style || atomDark}>
                     {file.code.default ? file.code.default : file.code}
                 </SyntaxHighlighter>
                 : null
