@@ -16,6 +16,9 @@
     "@storybook/theming": "^5.2.8",
     "@types/webpack-env": "^1.14.1"
   },
+  "peerDependencies": {
+    "raw-loader": ">=2.0"
+  },
   "scripts": {
     "test": "echo \"No test specified\""
   },
