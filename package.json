@@ -1,6 +1,6 @@
 {
   "name": "storybook-code-panel",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "Storybook Addon to display code related to a story.  Framework agnostic",
   "main": "index.js",
   "dependencies": {
